@@ -52,7 +52,7 @@ export default {
           }
           allCities.push(temp)
         })
-        //处理全球结果
+        //处理全球结果.
         console.log(ncovAbroad);
         let worldData = []
         ncovAbroad.data.newslist.forEach(item => {
