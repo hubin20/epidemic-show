@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 const Home = () => import("../views/Home.vue");
+const City = () => import("../views/City.vue");
+const Spring = () => import("../views/SpringView.vue");
 
 //安装插件
 Vue.use(VueRouter);
@@ -12,6 +14,18 @@ const routes = [
     name: "Home",
     component: Home,
   },
+  {
+    path: "/city/:city",
+    name: "City",
+    component: City,
+    props: true
+  },
+  {
+    path: "/spring/:cities",
+    name: "Spring",
+    component: Spring,
+    props: true
+  },
 ];
 
 //Uncaught (in promise) NavigationDuplicated解决方案如下
@@ -21,7 +35,7 @@ VueRouter.prototype.push = function push(location) {
 };
 
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",
   routes,
 });
 

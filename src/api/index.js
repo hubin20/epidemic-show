@@ -5,6 +5,9 @@ const base = {
   baseUrl1: "https://api.muxiaoguo.cn/api/epidemic",
   ncov: "/ncov/index",
   ncovabroad: "/ncovabroad/index",
+  juheBaseUrl: "http://apis.juhe.cn",
+  springCity: "/springTravel/citys",
+  springQuery: "/springTravel/query",
 };
 
 const api = {
@@ -28,10 +31,27 @@ const api = {
    * 世界疫情
    */
   getNcovAbroad(params) {
-    return axios.get(base.baseUrl + base.ncovabroad,{
-      params
+    return axios.get(base.baseUrl + base.ncovabroad, {
+      params,
+    });
+  },
+  /**
+   * 各个城市的数据
+   */
+  getSpringCity(params) {
+    return axios.get(base.springCity, {
+      params,
+    });
+  },
+  /**
+   * 各个城市的疫情政策数据
+   */
+   getSpringQuery(params) {
+    return axios.get(base.springQuery, {
+      params,
     });
   },
 };
+
 
 export default api;

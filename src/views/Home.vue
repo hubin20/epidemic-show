@@ -8,6 +8,8 @@
     <covid19-info />
     <case-num :caseNumData="caseNumData" />
     <echarts-map />
+    <my-swiper />
+    <spring-travel />
   </div>
 </template>
 
@@ -17,6 +19,8 @@ import Covid19Info from '../components/Covid19Info.vue'
 import CaseNum from '../components/CaseNum.vue'
 import api from '../api'
 import EchartsMap from '../components/EchartsMap.vue'
+import MySwiper from '../components/MySwiper.vue'
+import SpringTravel from '../components/SpringTravel.vue'
 
 export default {
   name: 'Home',
@@ -24,7 +28,9 @@ export default {
     HeaderBar,
     Covid19Info,
     CaseNum,
-    EchartsMap
+    EchartsMap,
+    MySwiper,
+    SpringTravel
   },
   data() {
     return {
@@ -95,4 +101,5 @@ export default {
 </script>
 
 <style scoped>
+.home {}
 </style>

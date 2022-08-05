@@ -78,13 +78,13 @@ export default {
 
 <style scoped>
 #chinaMap {
-  width: 375px;
-  height: 400px;
+  /* width: 5rem; */
+  height: 5.3333rem;
 }
 
 #worldMap {
-  width: 375px;
-  height: 400px;
+  /* width: 5rem; */
+  height: 5.3333rem;
 }
 
 .title {
