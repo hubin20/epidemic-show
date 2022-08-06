@@ -5,7 +5,7 @@
 <template>
   <div>
     <div class="from">
-      <h3 v-if="JSON.stringify(this.fromInfo) === '{}'">如果接口次数没有了，那么就显示这个数字</h3>
+      <h3 v-if="JSON.stringify(this.fromInfo) === '{}'">如果接口次数没有了，那么就显示这句话</h3>
       <h3>{{ fromInfo.city_name }}</h3>
       <p>{{ fromInfo.high_in_desc }}</p>
       <p>{{ fromInfo.low }}</p>
