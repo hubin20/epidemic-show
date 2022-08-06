@@ -22,7 +22,7 @@ const routes = [
   },
   {
     path: "/spring/:cities",
-    name: "Spring",
+    name: "SpringView",
     component: Spring,
     props: true
   },

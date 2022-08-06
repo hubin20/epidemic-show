@@ -5,8 +5,8 @@
 <template>
   <div class="spring">
     <h3 class="title">春节旅行各地政策</h3>
-    <cascader :options="options" label="始发地" @onValue="getGoCity" />
-    <cascader :options="options" label="目的地" @onValue="getOnCity" />
+    <cascader :options="options.length>0 ? options : options1" label="始发地" @onValue="getGoCity" />
+    <cascader :options="options.length>0 ? options : options1" label="目的地" @onValue="getOnCity" />
     <van-button round type="info" block @click="goSpringView">查看政策</van-button>
   </div>
 </template>
@@ -24,6 +24,18 @@ export default {
     return {
       // 选项列表，children 代表子选项，支持多级嵌套
       options: [],
+      options1: [
+        {
+          text: '浙江省',
+          value: '330000',
+          children: [{ text: '杭州市', value: '330100' },{ text: '绍兴市', value: '330101' }],
+        },
+        {
+          text: '江苏省',
+          value: '320000',
+          children: [{ text: '南京市', value: '320100' },{ text: '无锡市', value: '320101' }],
+        },
+      ],
       cities: []
     }
   },
@@ -59,16 +71,17 @@ export default {
   },
   methods: {
     getGoCity(data) {
-      console.log(data);
       this.cities.push(data)
     },
     getOnCity(data) {
-      console.log(data);
       this.cities.push(data)
     },
     goSpringView() {
-      if (this.cities.length === 2) {
-        this.$router.push({ name: "SpringView", params: { cities: this.cities } })
+      if (this.cities.length > 2) {
+        this.cities = this.cities.slice(-2)
+        this.$router.push({ name: "SpringView", params: { cities: JSON.stringify(this.cities) } })
+      } else if (this.cities.length === 2) {
+        this.$router.push({ name: "SpringView", params: { cities: JSON.stringify(this.cities) } })
       } else {
         this.$notify({ type: 'danger', message: '请选择地区' })
       }

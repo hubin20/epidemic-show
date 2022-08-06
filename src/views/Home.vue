@@ -58,26 +58,9 @@ export default {
     api.getNcov({
       key: "7fcc48b8a29e228a39fdc520c9419bd5"
     }).then(res => {
-      console.log(res);
       if (res.status === 200) {
         // 疫情病例
         this.desc = res.data.newslist[0].desc
-        // this.caseNumData = {
-        //   modifyTime: this.desc.modifyTime,
-        //   currentConfirmedCount: this.desc.currentConfirmedCount,
-        //   suspectedCount: this.desc.suspectedCount,
-        //   seriousCount: this.desc.seriousCount,
-        //   confirmedCount: this.desc.confirmedCount,
-        //   deadCount: this.desc.deadCount,
-        //   curedCount: this.desc.curedCount,
-        //   currentConfirmedIncr: this.desc.currentConfirmedIncr,
-        //   suspectedIncr: this.desc.suspectedIncr,
-        //   seriousIncr: this.desc.seriousIncr,
-        //   confirmedIncr: this.desc.confirmedIncr,
-        //   deadIncr: this.desc.deadIncr,
-        //   curedIncr: this.desc.curedIncr
-        // }
-
         this.caseNumData.modifyTime = this.desc.modifyTime
         this.caseNumData.currentConfirmedCount = this.desc.currentConfirmedCount,
           this.caseNumData.suspectedCount = this.desc.suspectedCount,
@@ -101,5 +84,4 @@ export default {
 </script>
 
 <style scoped>
-.home {}
 </style>
