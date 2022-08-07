@@ -14,11 +14,13 @@ const install = function (Vue) {
             var myChart = echarts.init(dom);
             var option = {
               tooltip: {
-                triggerOn: "click",//事件类型
+                triggerOn: "click", //事件类型
                 enterable: true, //鼠标是否可以进入提示框浮层
                 formatter(data) {
                   return (
-                    "<a style='color:#fff' href='#/city/"+data.name+"'++><div><p>" +
+                    "<a style='color:#fff' href='#/city/" +
+                    data.name +
+                    "'++><div><p>" +
                     data.name +
                     "</p><p>现存确诊:" +
                     data.value +
@@ -351,66 +353,80 @@ const install = function (Vue) {
             };
             myChart.setOption(option);
           },
-          provinceMap(id,city,data){
+          provinceMap(id, city, data) {
             this.chart = echarts.init(document.getElementById(id));
             var option = {
-                tooltip:{
-                    formatter(data) {
-                      if (data.value) {
-                        return "<div><p>"+data.name + "</p><p>现存确诊:" + data.value + "</p></div>"
-                      } else {
-                        return "<div><p>"+data.name + "</p><p>现存确诊:" + 0 + "</p></div>"
-                      }
-                    }
+              tooltip: {
+                formatter(data) {
+                  if (data.value) {
+                    return (
+                      "<div><p>" +
+                      data.name +
+                      "</p><p>现存确诊:" +
+                      data.value +
+                      "</p></div>"
+                    );
+                  } else {
+                    return (
+                      "<div><p>" +
+                      data.name +
+                      "</p><p>现存确诊:" +
+                      0 +
+                      "</p></div>"
+                    );
+                  }
                 },
-                visualMap: [
-                  //映射
-                  {
-                    type: "piecewise", //分段
-                    pieces: [
-                      //配置颜色区间
-                      { min: 0, max: 0, color: "#FFF" },
-                      { min: 1, max: 10, color: "#FDFDCF" },
-                      { min: 10, max: 100, color: "#FE9E83" },
-                      { min: 100, max: 500, color: "#E55A4E" },
-                      { min: 500, max: 10000, color: "#4F070D" },
-                      { min: 10000, color: "#000" },
-                    ],
+              },
+              visualMap: [
+                //映射
+                {
+                  type: "piecewise", //分段
+                  pieces: [
+                    //配置颜色区间
+                    { min: 0, max: 0, color: "#FFF" },
+                    { min: 1, max: 10, color: "#FDFDCF" },
+                    { min: 10, max: 100, color: "#FE9E83" },
+                    { min: 100, max: 500, color: "#E55A4E" },
+                    { min: 500, max: 10000, color: "#4F070D" },
+                    { min: 10000, color: "#000" },
+                  ],
+                },
+              ],
+              series: [
+                {
+                  type: "map",
+                  map: city, // 只能是中文
+                  label: {
+                    normal: {
+                      show: true,
+                      textStyle: {
+                        fontSize: 8,
+                      },
+                    },
                   },
-                ],
-                series:[{
-                    type:"map",
-                    map:city, // 只能是中文
-                    label:{
-                        normal:{
-                            show:true,
-                            textStyle:{
-                                fontSize:8
-                            }
-                        }
+                  itemStyle: {
+                    normal: {
+                      areaColor: "rgba(0,255,236,0)",
+                      borderColor: "rgba(0,0,0,0.2)",
                     },
-                    itemStyle:{
-                        normal: {
-                            areaColor: 'rgba(0,255,236,0)',
-                            borderColor: 'rgba(0,0,0,0.2)',
-                        },
-                        emphasis: {
-                            areaColor: 'rgba(255,180,0,0.8)',
-                            shadowOffsetX: 0,
-                            shadowOffsetY: 0,
-                            shadowBlur: 20,
-                            borderWidth: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
+                    emphasis: {
+                      areaColor: "rgba(255,180,0,0.8)",
+                      shadowOffsetX: 0,
+                      shadowOffsetY: 0,
+                      shadowBlur: 20,
+                      borderWidth: 0,
+                      shadowColor: "rgba(0, 0, 0, 0.5)",
                     },
-                    // data:[
-                    //     {name:'呼和浩特市',value:2,itemStyle:{ normal:{ areaColor:"#ff0000" }}}
-                    // ]
-                    data:data
-                }]
-            }
-            this.chart.setOption(option)
-        }
+                  },
+                  // data:[
+                  //     {name:'呼和浩特市',value:2,itemStyle:{ normal:{ areaColor:"#ff0000" }}}
+                  // ]
+                  data: data,
+                },
+              ],
+            };
+            this.chart.setOption(option);
+          },
         };
       },
     },

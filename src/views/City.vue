@@ -34,13 +34,13 @@ export default {
       api_key: "77710d287ef93c12",
       type: 'epidemicInfectionData'
     }).then(res => {
-      // console.log(res);
+      console.log(res);
       if (res.status === 200) {
         res.data.data.forEach(item => {
           if (item.provinceShortName === this.city) {
             item.cities.forEach(item => {
               let temp = {
-                name: item.cityName.includes('盟') ? item.cityName : item.cityName + '市' || item.cityName.includes('区') ? item.cityName : item.cityName+ '市',
+                name: (item.cityName.includes('盟') ? item.cityName : item.cityName + '市') || (item.cityName.includes('区') ? item.cityName : item.cityName+ '市'),
                 value: item.currentConfirmedCount
               }
               provinces.push(temp) 

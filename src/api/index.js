@@ -46,12 +46,11 @@ const api = {
   /**
    * 各个城市的疫情政策数据
    */
-   getSpringQuery(params) {
+  getSpringQuery(params) {
     return axios.get(base.springQuery, {
       params,
     });
   },
 };
-
 
 export default api;

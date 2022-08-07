@@ -8,14 +8,14 @@
       <h3 v-if="JSON.stringify(this.fromInfo) === '{}'">如果接口次数没有了，那么就显示这句话</h3>
       <h3>{{ fromInfo.city_name }}</h3>
       <p>{{ fromInfo.high_in_desc }}</p>
-      <p>{{ fromInfo.low }}</p>
+      <p>{{ fromInfo.low_in_desc }}</p>
       <p>{{ fromInfo.out_desc }}</p>
     </div>
     <hr>
     <div class="to">
       <h3>{{ toInfo.city_name }}</h3>
       <p>{{ toInfo.high_in_desc }}</p>
-      <p>{{ toInfo.low }}</p>
+      <p>{{ toInfo.low_in_desc }}</p>
       <p>{{ toInfo.out_desc }}</p>
     </div>
   </div>
@@ -44,7 +44,6 @@ export default {
   watch: {},
   created() { },
   mounted() {
-    console.log(this.fromInfo.length);
     api.getSpringQuery({
       key: "2b06895660ae24478c9706d38fd5c0d3",
       from: JSON.parse(this.cities)[0].value,
@@ -52,7 +51,10 @@ export default {
     }).then(res => {
       if (res.status === 200) {
         this.fromInfo = res.data.result.from_info
+        console.log(this.fromInfo);
         this.toInfo = res.data.result.to_info
+        console.log(this.toInfo);
+
       }
     })
   },
