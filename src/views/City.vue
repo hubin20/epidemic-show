@@ -40,7 +40,7 @@ export default {
           if (item.provinceShortName === this.city) {
             item.cities.forEach(item => {
               let temp = {
-                name: (item.cityName.includes('盟') ? item.cityName : item.cityName + '市') || (item.cityName.includes('区') ? item.cityName : item.cityName+ '市'),
+                name: (item.cityName.includes('盟') ? item.cityName : item.cityName + '市') || (item.cityName.includes('区') ? item.cityName : item.cityName+ '市') || (item.cityName.includes('县') ? item.cityName : item.cityName + '市'),
                 value: item.currentConfirmedCount
               }
               provinces.push(temp) 
