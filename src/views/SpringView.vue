@@ -51,9 +51,7 @@ export default {
     }).then(res => {
       if (res.status === 200) {
         this.fromInfo = res.data.result.from_info
-        console.log(this.fromInfo);
         this.toInfo = res.data.result.to_info
-        console.log(this.toInfo);
 
       }
     })
